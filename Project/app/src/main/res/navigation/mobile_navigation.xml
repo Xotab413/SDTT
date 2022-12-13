@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/currenciesFragment">
+    <fragment
+        android:id="@+id/currenciesFragment"
+        android:name="com.example.currencies.presentation.currencies_fragment.CurrenciesFragment"
+        android:label="@string/currencies_fragment_title"
+        tools:layout="@layout/currencies_fragment">
+        <action
+            android:id="@+id/action_currenciesFragment_to_scrollingFragment"
+            app:destination="@id/settingsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_currenciesFragment_to_dynamicsFragment"
+            app:destination="@id/dynamicsFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.currencies.presentation.settings_fragment.SettingsFragment"
+        android:label="@string/settings_fragment_title"
+        tools:layout="@layout/settings_fragment" />
+    <fragment
+        android:id="@+id/dynamicsFragment"
+        android:name="com.example.currencies.presentation.dynamics_fragment.DynamicsFragment"
+        android:label="@string/dynamics_fragment_title"
+        tools:layout="@layout/dynamics_fragment">
+        <argument
+            android:name="id"
+            app:argType="integer" />
+        <argument
+            android:name="name"
+            app:argType="string" />
+    </fragment>
+</navigation>

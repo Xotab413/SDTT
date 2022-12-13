@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Currencies</string>
+    <string name="currencies_are_loading">Курсы валют загружаются, подождите</string>
+    <string name="currencies_fragment_title">Курсы валют</string>
+    <string name="settings_fragment_title">Настройки</string>
+    <string name="dynamics_fragment_title">Динамика курса</string>
+    <string name="byn_dynamic">Курс НБРБ BYN - </string>
+
+</resources>

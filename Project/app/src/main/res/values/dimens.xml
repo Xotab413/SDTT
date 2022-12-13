@@ -1,0 +1,11 @@
+<resources>
+    <dimen name="text_margin">16dp</dimen>
+    <!-- Currency item -->
+    <dimen name="small_padding">5dp</dimen>
+    <dimen name="text_size_big">20sp</dimen>
+    <dimen name="text_size_medium">15sp</dimen>
+    <dimen name="text_size_small">12sp</dimen>
+    <dimen name="numbers_size">18sp</dimen>
+
+
+</resources>
