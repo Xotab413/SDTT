@@ -8,6 +8,7 @@ or just use [short-link]
 ## Step 2
 When you download our app on ur  device, install it through default package installer.
 ![android_install]
+
 Press install button, and that's it
 
 ### Enjoy our app, and have a nice day :3
