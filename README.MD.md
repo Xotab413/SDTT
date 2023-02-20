@@ -1,5 +1,6 @@
-# Currencies
+﻿# Currencies
 
+> Matusevich Semen + Mikhailovsky Mikhail + Przhelyaskovskaya Varvara + Mainich Nikita
 
 This application shows exchange rates for today and tomorrow, provides options for customizing the display of rates, as well as currency dynamics for the last 30 days.
 [NBRB api](https://www.nbrb.by/apihelp/exrates) was used in this project.
@@ -23,3 +24,16 @@ Technologies used in this project:
 * Navigation components;
 * Flow;
 * Coroutines.
+
+
+# Docs
+
+[Installation guide]: (https://github.com/Xotab413/SDTT/blob/main/install_guide.md)
+
+[SDS](https://github.com/Xotab413/SDTT/blob/main/SDS/README.md)
+
+[SRS](https://github.com/Xotab413/SDTT/blob/main/SRS/README.md)
+
+[Testing](https://github.com/Xotab413/SDTT/blob/main/Tests/README.md)
+
+[Project source code](https://github.com/Xotab413/SDTT/blob/main/Project)
