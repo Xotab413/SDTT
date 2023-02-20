@@ -28,7 +28,7 @@ Technologies used in this project:
 
 # Docs
 
-[Installation guide]: (https://github.com/Xotab413/SDTT/blob/main/install_guide.md)
+[Installation guide](https://github.com/Xotab413/SDTT/blob/main/install_guide.md)
 
 [SDS](https://github.com/Xotab413/SDTT/blob/main/SDS/README.md)
 
