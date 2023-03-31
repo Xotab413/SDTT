@@ -8,6 +8,9 @@ import com.example.currencies.common.Constants
 import com.example.currencies.domain.model.Currency
 import java.util.*
 
+/**
+* Room database for the [Currency] entity.
+ */
 @Database(entities = [Currency::class], version = 6, exportSchema = false)
 abstract class CurrencyRoomDatabase : RoomDatabase() {
 
@@ -16,7 +19,13 @@ abstract class CurrencyRoomDatabase : RoomDatabase() {
     companion object {
         @Volatile
         private var INSTANCE: CurrencyRoomDatabase? = null
-
+        /**
+         * Returns an instance of the [CurrencyRoomDatabase]. If an instance already exists, that instance will be returned.
+         * Otherwise, a new instance will be created and returned.
+         *
+         * @param context The context to be used when creating the database.
+         * @return An instance of the [CurrencyRoomDatabase].
+         */
         fun getDatabase(context: Context): CurrencyRoomDatabase {
             return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(

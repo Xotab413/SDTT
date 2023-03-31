@@ -6,6 +6,9 @@ import com.example.currencies.presentation.settings_fragment.SettingsViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
+/**
+ * Module for defining ViewModels and their dependencies.
+ */
 val viewModelModule = module {
     viewModel { CurrenciesViewModel(get(), get(), get(), get(), get()) }
     viewModel { SettingsViewModel(get(), get()) }

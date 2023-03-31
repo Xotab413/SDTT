@@ -3,7 +3,9 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'androidx.navigation.safeargs'
+    id 'org.jetbrains.dokka'
 }
+
 android {
     compileSdk 31
 
@@ -41,7 +43,9 @@ android {
         jvmTarget = '1.8'
     }
 }
-
+tasks.dokkaHtml.configure {
+    outputDirectory.set(file("../docs/html"))
+}
 dependencies {
 
     implementation 'androidx.core:core-ktx:1.7.0'
