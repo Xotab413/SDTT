@@ -22,6 +22,9 @@ class SettingsFragment : Fragment() {
 
     private var adapterq = RecyclerViewAdapter()
 
+    /**
+     * The ItemTouchHelper that enables the user to drag and drop items in the [RecyclerView].
+     */
     private val itemTouchHelper by lazy {
         val simpleItemTouchCallback = object : ItemTouchHelper.SimpleCallback(
             ItemTouchHelper.UP or ItemTouchHelper.DOWN,
@@ -70,12 +73,16 @@ class SettingsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // Set up RecyclerView with adapter and ItemTouchHelper
         binding.settings.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = adapterq
             setItemViewCacheSize(30)
         }
         itemTouchHelper.attachToRecyclerView(binding.settings)
+
+        // Observe the state in the viewModel and submit changes to the adapter
         lifecycleScope.launchWhenCreated {
             viewModel.setCurrencies()
             viewModel.state.collect {
@@ -84,6 +91,12 @@ class SettingsFragment : Fragment() {
         }
     }
 
+    /**
+     * Handle the selection of the options menu items.
+     *
+     * @param item the selected menu item
+     * @return true if the event was handled successfully, false otherwise
+     */
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.navigate_up -> {

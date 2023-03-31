@@ -3,6 +3,11 @@ package com.example.currencies.common
 import android.widget.ImageView
 import com.example.currencies.R
 
+/**
+ * Sets the flag image of this ImageView based on the provided currency code.
+ *
+ * @param str The currency code used to determine the flag image to be displayed.
+ */
 fun ImageView.setFlagImageFromResource(str: String) {
     this.setImageResource(
         when (str) {
