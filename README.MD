@@ -37,3 +37,7 @@ Technologies used in this project:
 [Testing](https://github.com/Xotab413/SDTT/blob/main/Tests/README.md)
 
 [Project source code](https://github.com/Xotab413/SDTT/blob/main/Project)
+
+[Docs](https://github.com/Xotab413/SDTT/blob/main/Project/docs/html/index.html)
+> docs generate with [dokka](https://htmlpreview.github.io/?https://github.com/Kotlin/dokka) plugin
+
