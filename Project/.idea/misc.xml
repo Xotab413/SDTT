@@ -3,10 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Semen/university/6_sem/TRTPO/SDTT/Project/app/src/main/res/drawable/thumb.xml" value="0.2703125" />
-        <entry key="..\:/Semen/university/6_sem/TRTPO/SDTT/Project/app/src/main/res/drawable/thumbfalse.xml" value="0.2703125" />
-        <entry key="..\:/Semen/university/6_sem/TRTPO/SDTT/Project/app/src/main/res/drawable/thumbtrue.xml" value="0.2703125" />
-        <entry key="..\:/Semen/university/6_sem/TRTPO/SDTT/Project/app/src/main/res/drawable/track.xml" value="0.2703125" />
+        <entry key="..\:/Data/university/5_sem/trtpo/SDTT/Project/app/src/main/res/drawable/baseline_theme_24.xml" value="0.295" />
+        <entry key="..\:/Data/university/5_sem/trtpo/SDTT/Project/app/src/main/res/drawable/thumbfalse.xml" value="0.197" />
+        <entry key="..\:/Data/university/5_sem/trtpo/SDTT/Project/app/src/main/res/drawable/thumbtrue.xml" value="0.197" />
+        <entry key="..\:/Data/university/5_sem/trtpo/SDTT/Project/app/src/main/res/drawable/track.xml" value="0.197" />
+        <entry key="..\:/Data/university/5_sem/trtpo/SDTT/Project/app/src/main/res/layout/activity_main.xml" value="0.18489583333333334" />
+        <entry key="..\:/Data/university/5_sem/trtpo/SDTT/Project/app/src/main/res/layout/currencies_fragment.xml" value="0.3867102396514161" />
+        <entry key="..\:/Data/university/5_sem/trtpo/SDTT/Project/app/src/main/res/layout/currency_item.xml" value="0.18489583333333334" />
+        <entry key="..\:/Data/university/5_sem/trtpo/SDTT/Project/app/src/main/res/layout/currency_setting_card.xml" value="0.18489583333333334" />
+        <entry key="..\:/Data/university/5_sem/trtpo/SDTT/Project/app/src/main/res/layout/dynamics_fragment.xml" value="0.3619791666666667" />
+        <entry key="..\:/Data/university/5_sem/trtpo/SDTT/Project/app/src/main/res/layout/settings_fragment.xml" value="0.3619791666666667" />
+        <entry key="..\:/Data/university/5_sem/trtpo/SDTT/Project/app/src/main/res/layout/switch_item.xml" value="0.3619791666666667" />
+        <entry key="..\:/Data/university/5_sem/trtpo/SDTT/Project/app/src/main/res/menu/main_menu.xml" value="0.3619791666666667" />
+        <entry key="..\:/Data/university/5_sem/trtpo/SDTT/Project/app/src/main/res/menu/settings_menu.xml" value="0.18489583333333334" />
       </map>
     </option>
   </component>

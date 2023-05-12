@@ -1,27 +1,24 @@
 package com.example.currencies.presentation.currencies_fragment
 
-import android.content.Context
-import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Bundle
 import android.view.*
-import android.widget.Switch
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatDelegate
-import androidx.appcompat.widget.SwitchCompat
+import androidx.core.app.ActivityCompat.recreate
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.currencies.R
 import com.example.currencies.common.Constants.dateFormatForUI
 import com.example.currencies.databinding.CurrenciesFragmentBinding
 import kotlinx.coroutines.flow.collect
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import kotlin.properties.Delegates
 
 class CurrenciesFragment : Fragment() {
 
+    private var currentTheme = TEAL
     private val viewModel by viewModel<CurrenciesViewModel>()
     private var _binding: CurrenciesFragmentBinding? = null
     private val binding get() = _binding!!
@@ -34,50 +31,25 @@ class CurrenciesFragment : Fragment() {
             )
         )
     }
-    private lateinit var  switchMode: SwitchCompat
-    private var nightMode by Delegates.notNull<Boolean>()
-
-    private lateinit var sharedPreferences: SharedPreferences
-    private lateinit var editor: SharedPreferences.Editor
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        currentTheme = PreferenceManager
+            .getDefaultSharedPreferences(requireContext())
+            .getInt(KEY_THEME, TEAL)
+
+        setTheme()
         viewModel.initCurrencies()
     }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         _binding = CurrenciesFragmentBinding.inflate(inflater, container, false)
         bindUI()
-        val activity = requireActivity()
 
-       switchMode =  activity.findViewById(R.id.switchMode)
-        sharedPreferences = activity.getSharedPreferences("MODE",Context.MODE_PRIVATE)
-        nightMode = sharedPreferences.getBoolean("nightMode",false)
-        if(nightMode) {
-            switchMode.isChecked = true
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-        }
-        switchMode.setOnClickListener {
-            fun onClick() {
-                if (nightMode) {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                    editor = sharedPreferences.edit()
-                    editor.putBoolean("nightMode", false)
-                } else {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                    editor = sharedPreferences.edit()
-                    editor.putBoolean("nightMode", true)
-                }
-                editor.apply()
-            }
-
-        }
         lifecycleScope.launchWhenResumed {
             viewModel.apply {
                 updateCurrencies()
@@ -158,17 +130,59 @@ class CurrenciesFragment : Fragment() {
                 val nav = CurrenciesFragmentDirections.actionCurrenciesFragmentToScrollingFragment()
                 findNavController().navigate(nav)
             }
+
+            R.id.theme -> {
+                switchTheme(item)
+                recreate(requireActivity())
+            }
         }
         return true
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.main_menu, menu)
+
         super.onCreateOptionsMenu(menu, inflater)
+
+        when (currentTheme) {
+            TEAL -> {
+                menu.getItem(0).icon = context?.getDrawable(R.drawable.ic_baseline_bedtime_24)!!
+            }
+            CYAN -> {
+                menu.getItem(0).icon = context?.getDrawable(R.drawable.ic_baseline_wb_sunny_24)!!
+            }
+        }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    protected fun setTheme() {
+        requireActivity().setTheme(currentTheme)
+    }
+
+    protected fun switchTheme(item: MenuItem) {
+        currentTheme = when (currentTheme) {
+            TEAL -> {
+                CYAN
+            }
+            CYAN -> {
+                TEAL
+            }
+            else -> -1
+        }
+
+        PreferenceManager.getDefaultSharedPreferences(requireActivity()).edit()
+            .putInt(KEY_THEME, currentTheme)
+            .apply()
+        setTheme()
+    }
+
+    companion object {
+        private const val KEY_THEME = "Theme"
+        private const val TEAL = R.style.AppTheme_Teal
+        private const val CYAN = R.style.AppTheme_Cyan
     }
 }
