@@ -7,8 +7,7 @@
     <fragment
         android:id="@+id/currenciesFragment"
         android:name="com.example.currencies.presentation.currencies_fragment.CurrenciesFragment"
-        android:label="@string/currencies_fragment_title"
-        tools:layout="@layout/currencies_fragment">
+        android:label="@string/currencies_fragment_title">
         <action
             android:id="@+id/action_currenciesFragment_to_scrollingFragment"
             app:destination="@id/settingsFragment"

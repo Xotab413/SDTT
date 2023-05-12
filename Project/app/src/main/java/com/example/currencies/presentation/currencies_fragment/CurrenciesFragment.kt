@@ -1,9 +1,14 @@
 package com.example.currencies.presentation.currencies_fragment
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Bundle
 import android.view.*
+import android.widget.Switch
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.widget.SwitchCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -13,6 +18,7 @@ import com.example.currencies.common.Constants.dateFormatForUI
 import com.example.currencies.databinding.CurrenciesFragmentBinding
 import kotlinx.coroutines.flow.collect
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import kotlin.properties.Delegates
 
 class CurrenciesFragment : Fragment() {
 
@@ -28,6 +34,13 @@ class CurrenciesFragment : Fragment() {
             )
         )
     }
+    private lateinit var  switchMode: SwitchCompat
+    private var nightMode by Delegates.notNull<Boolean>()
+
+    private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var editor: SharedPreferences.Editor
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,7 +54,30 @@ class CurrenciesFragment : Fragment() {
     ): View {
         _binding = CurrenciesFragmentBinding.inflate(inflater, container, false)
         bindUI()
+        val activity = requireActivity()
 
+       switchMode =  activity.findViewById(R.id.switchMode)
+        sharedPreferences = activity.getSharedPreferences("MODE",Context.MODE_PRIVATE)
+        nightMode = sharedPreferences.getBoolean("nightMode",false)
+        if(nightMode) {
+            switchMode.isChecked = true
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        }
+        switchMode.setOnClickListener {
+            fun onClick() {
+                if (nightMode) {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                    editor = sharedPreferences.edit()
+                    editor.putBoolean("nightMode", false)
+                } else {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                    editor = sharedPreferences.edit()
+                    editor.putBoolean("nightMode", true)
+                }
+                editor.apply()
+            }
+
+        }
         lifecycleScope.launchWhenResumed {
             viewModel.apply {
                 updateCurrencies()
